@@ -1,0 +1,5 @@
+{
+    "status": 200,
+    "accuracy": 0.7,
+    "value": ["Reserved", "Sensitive", "Cautious", "Discreet"]
+    }
