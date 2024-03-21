@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Character {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  joy        Int
+  anger      Int
+  sadness    Int
+  excitement Int
+  calmness   Int
+  confidence Int
+  fear       Int
+  kindness   Int
+  honesty    Int
+  userId     String @unique @db.ObjectId
+  user       User   @relation(fields: [userId], references: [id])
+}
+
+model User {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  rank      Rank
+  character Character? // Note: Use `Character?` to indicate a one-to-one relationship
+  thoughts  String[]
+  abstracts String?
+}
+
+enum Rank {
+  S
+  A
+  B
+  C
+  D
+}

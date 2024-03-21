@@ -1,6 +1,6 @@
 import { User } from '@/constants/User';
 import express, { Request, Response } from 'express';
-import { BoundResponse } from 'middlewares/bindResponseFormat';
+import { BoundResponse } from '@/middlewares/bindResponseFormat';
 
 // Create a new router instance
 const userRouter = express.Router();

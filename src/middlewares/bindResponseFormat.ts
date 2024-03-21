@@ -1,6 +1,7 @@
 import { TResponseFormat } from '@/types/TResFormat';
 import { Request, NextFunction, Response } from 'express';
 
+
 // Extend Response interface to include ResponseFormat property
 export interface BoundResponse extends Response {
     ResponseFormat: {

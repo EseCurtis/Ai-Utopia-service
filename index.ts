@@ -3,7 +3,7 @@ import { configDotenv } from 'dotenv';
 import bodyParser from 'body-parser';
 import apiRouter from '@/routes/api';
 import ResponseFormat from '@/resources/ResFormat';
-import bindResponseFormat, { BoundResponse } from 'middlewares/bindResponseFormat';
+import bindResponseFormat, { BoundResponse } from '@/middlewares/bindResponseFormat';
 
 
 configDotenv()
@@ -22,6 +22,7 @@ app.use((req: Request, res: BoundResponse) => {
 
 
 app.listen(port, () => {
+  
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
 

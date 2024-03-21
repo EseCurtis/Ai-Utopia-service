@@ -19,7 +19,7 @@ export const User: TUser = {
     thoughts: ["RIches", "Growth", "Matter", "Food", "Piped Out"]
 }
 
-export const BaseUser: TUser = {
+export const BaseUser = {
     name: "",
     rank: Ranks.BISHOP,
     character: {
@@ -35,3 +35,5 @@ export const BaseUser: TUser = {
     },
     thoughts: []
 }
+
+type buser = typeof BaseUser;
