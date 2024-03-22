@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -r tsconfig-paths/register index.ts",
     "build": "prisma generate && npx tspc",
-    "prod": "node-ts -r tsconfig-paths/register index.ts"
+    "prod": "node-ts -r tsconfig-paths/register index.ts",
+    "vercel-build": "prisma generate && prisma migrate deploy && npx tspc"
   },
   "keywords": [],
   "author": "",
