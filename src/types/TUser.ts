@@ -1,10 +1,12 @@
 import { TRank } from "@/dtos/user/Rank";
 import { TCharacter } from "./quantities/user/TCharacter";
 import { TThoughts } from "./quantities/user/TThought";
+import { TPersonalityType } from "@/dtos/user/PersonalityTypes";
 
 export type TUser = {
     name: string;
     rank: TRank;
+    personality: TPersonalityType;
     character: TCharacter;
     thoughts: TThoughts;
     abstracts?: string;

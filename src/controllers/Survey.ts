@@ -9,6 +9,8 @@ import { BaseUser } from "@/constants/User";
 import { RankValueForm } from "@/promptFormers/Rank.former";
 import { ThougthsValueForm } from "@/promptFormers/Thoughts.former";
 import { CharacterValueForm } from "@/promptFormers/Character.former";
+import { TPersonalityType } from "@/dtos/user/PersonalityTypes";
+import { PersonalityTypeForm } from "@/promptFormers/PersonalityType.former";
 
 export class Survey {
     private payload: TPayload;
@@ -24,6 +26,14 @@ export class Survey {
 
     private formRankPrompt() {
         return `based on the json bio data: ${JSON.stringify(this.payload.bioData)} and survey answers: bio data: ${JSON.stringify(this.payload.surveyAnswers)}, rank the user`
+    }
+
+    private formThoughtsPrompt() {
+        return `based on the json bio data: ${JSON.stringify(this.payload.bioData)} and survey answers: bio data: ${JSON.stringify(this.payload.surveyAnswers)}, get thoughts for the user`
+    }
+
+    private formPersonalityTypePrompt() {
+        return `based on the json user data: ${JSON.stringify(this.user)}, get the best MBTI personality type that fits the user description.`
     }
 
     private getUserName(): TUser["name"] {
@@ -49,9 +59,15 @@ export class Survey {
     }
 
     private async getThoughts(): Promise<TUser["thoughts"]> {
-        const thoughts = await this.AiSuggest.getSuggestion<TThoughts>(this.formRankPrompt(), ThougthsValueForm);
+        const thoughts = await this.AiSuggest.getSuggestion<TThoughts>(this.formThoughtsPrompt(), ThougthsValueForm);
         return thoughts;
     }
+
+    private async getPersonalityType(): Promise<TUser["personality"]> {
+        const personalityType = await this.AiSuggest.getSuggestion<TPersonalityType>(this.formPersonalityTypePrompt(), PersonalityTypeForm);
+        return personalityType;
+    }
+
 
     public async getUser(): Promise<TUser> {
         this.user.name = this.getUserName();
@@ -59,8 +75,10 @@ export class Survey {
         this.user.character = await this.getUserCharacter();
         this.user.rank = await this.getRank();
         this.user.thoughts = await this.getThoughts();
+        this.user.personality = await this.getPersonalityType();
 
         return this.user;
     }
+    
 }
 

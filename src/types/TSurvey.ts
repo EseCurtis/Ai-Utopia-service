@@ -1,3 +1,7 @@
+import { TPersonalityType } from "@/dtos/user/PersonalityTypes"
+import { TRank } from "@/dtos/user/Rank"
+import { TUser } from "./TUser"
+
 export type TbioData = {
     firstName: string
     lastName: string
@@ -26,4 +30,11 @@ export type TSurveyAnswers = {
 export type TPayload = {
     bioData: TbioData,
     surveyAnswers: TSurveyAnswers
+}
+
+
+export type TSurveyResponse = {
+    name: TUser["name"];
+    personalityType: TPersonalityType;
+    rank: TRank;
 }

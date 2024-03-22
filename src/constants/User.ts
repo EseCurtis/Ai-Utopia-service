@@ -1,10 +1,12 @@
 import { Scales } from "@/dtos/Scales";
+import { PersonalityTypes } from "@/dtos/user/PersonalityTypes";
 import { Ranks } from "@/dtos/user/Rank";
 import { TUser } from "@/types/TUser";
 
 export const User: TUser = {
     name: "Ese Curtis",
     rank: Ranks.KING,
+    personality: PersonalityTypes.INFJ,
     character: {
         joy: Scales.MAX,
         anger: Scales.MID,
@@ -19,9 +21,10 @@ export const User: TUser = {
     thoughts: ["RIches", "Growth", "Matter", "Food", "Piped Out"]
 }
 
-export const BaseUser = {
+export const BaseUser: TUser = {
     name: "",
     rank: Ranks.BISHOP,
+    personality: PersonalityTypes.ISTJ,
     character: {
         joy: Scales.MIN,
         anger: Scales.MIN,

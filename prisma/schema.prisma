@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider   = "prisma-client-js"
   engineType = "library"
 }
 
@@ -14,8 +14,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+//user schema
+model User {
+  id          String          @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  rank        Rank
+  personality PersonalityType
+  character   Character?
+  thoughts    String[]
+  abstracts   String?
+}
+
 model Character {
-  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
   joy        Int
   anger      Int
   sadness    Int
@@ -29,19 +40,29 @@ model Character {
   user       User   @relation(fields: [userId], references: [id])
 }
 
-model User {
-  id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  rank      Rank
-  character Character? // Note: Use `Character?` to indicate a one-to-one relationship
-  thoughts  String[]
-  abstracts String?
-}
-
 enum Rank {
   S
   A
   B
   C
   D
+}
+
+enum PersonalityType {
+  ESTJ
+  ENTJ
+  ESFJ
+  ENFJ
+  ISTJ
+  ISFJ
+  INTJ
+  INFJ
+  ESTP
+  ESFP
+  ENTP
+  ENFP
+  ISTP
+  ISFP
+  INTP
+  INFP
 }

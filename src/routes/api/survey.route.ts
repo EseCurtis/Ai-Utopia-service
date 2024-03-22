@@ -2,7 +2,8 @@ import { AiSuggest } from '@/controllers/AiSuggest';
 import { Survey } from '@/controllers/Survey';
 import { BoundResponse } from '@/middlewares/bindResponseFormat';
 import { UserEntity } from '@/models/user/user.entity';
-import { TPayload } from '@/types/TSurvey';
+import { TPayload, TSurveyResponse } from '@/types/TSurvey';
+import { TUser } from '@/types/TUser';
 import express, { Request, Response } from 'express';
 
 // Create a new router instance
@@ -17,9 +18,15 @@ survey.post("/add", async (req: Request, res: BoundResponse) => {
         const user = await _Survey.getUser();
 
         _User.create(user)
-            .then((status) => {
-                console.info("STATUS::", status)
-                res.ResponseFormat.success("Created user successfully.")
+            .then((status: TUser) => {
+                //console.info("STATUS::", status)
+                const data: TSurveyResponse = {
+                    name: status.name,
+                    rank: status.rank,
+                    personalityType: status.personality
+                }
+
+                res.ResponseFormat.success("Created user successfully.", data)
             })
             .catch((error) => {
                 console.info("ERROR::", error)
