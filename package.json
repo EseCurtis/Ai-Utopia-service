@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -r tsconfig-paths/register index.ts",
-    "build": "npx prisma generate && npx tspc ",
+    "build": "npx tspc && npx prisma generate",
     "prod": "node-ts -r tsconfig-paths/register index.ts"
   },
   "keywords": [],
