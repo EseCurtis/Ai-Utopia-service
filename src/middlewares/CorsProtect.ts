@@ -1,7 +1,7 @@
 import cors from "cors";
 
 
-const allowedOrigins = ['http://localhost:5173', 'http://example2.com'];
+const allowedOrigins = ['http://localhost:5173', 'https://personiee.vercel.app'];
 
 const corsOptions = {
     origin: function (origin: string, callback: (...params: any) => any) {
