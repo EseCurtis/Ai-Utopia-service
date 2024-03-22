@@ -9,55 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.clientQuery = exports.PrismaTest = exports.prisma = void 0;
-const client_1 = require("@prisma/client");
-exports.prisma = new client_1.PrismaClient();
-const PrismaTest = () => {
-    function main() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield exports.prisma.user.deleteMany({ where: { name: "Ese Curtis" }, });
-            // await prisma.user.create({
-            //     data: {
-            //         name: "Ese Curtis",
-            //         rank: Ranks.KING,
-            //         character: {
-            //             create: {
-            //                 joy: Scales.MAX,
-            //                 anger: Scales.MID,
-            //                 sadness: Scales.SUBMAX,
-            //                 excitement: Scales.SUBMIN,
-            //                 calmness: Scales.SUBMIN,
-            //                 confidence: Scales.MID,
-            //                 fear: Scales.SUBMAX,
-            //                 kindness: Scales.SUBMIN,
-            //                 honesty: Scales.MAX,
-            //             }
-            //         },
-            //         thoughts: ["RIches", "Growth", "Matter", "Food", "Piped Out"]
-            //     },
-            //     include: {
-            //         character: true, // Include the associated character in the response
-            //     },
-            // })
-            const allUsers = yield exports.prisma.character.findMany({
-                include: {
-                    user: true, // Include the associated character in the response
-                }
-            });
-            console.dir(allUsers, { depth: null });
-        });
-    }
-    main()
-        .then(() => __awaiter(void 0, void 0, void 0, function* () {
-        yield exports.prisma.$disconnect();
-    }))
-        .catch((e) => __awaiter(void 0, void 0, void 0, function* () {
-        console.error(e);
-        yield exports.prisma.$disconnect();
-        process.exit(1);
-    }));
-};
-exports.PrismaTest = PrismaTest;
+exports.clientQuery = exports.prisma = void 0;
+const edge_1 = require("@prisma/client/edge");
+exports.prisma = new edge_1.PrismaClient();
 const clientQuery = (prismaQuery) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield prismaQuery();
