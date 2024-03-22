@@ -6,3 +6,4 @@ exports.Scopes = {
     POST: "/post",
     REACTION: "/reaction"
 };
+//# sourceMappingURL=Scopes.js.map

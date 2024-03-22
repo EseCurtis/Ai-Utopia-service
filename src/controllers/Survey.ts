@@ -2,11 +2,13 @@ import { TAnswer, TPayload, TSurveyAnswers } from "@/types/TSurvey";
 import { TUser } from "@/types/TUser";
 import { AiSuggest } from "./AiSuggest";
 import { TCharacter } from "@/types/quantities/user/TCharacter";
-import { CharacterValueForm, RankValueForm, ThougthsValueForm } from "@/constants/ResponseForms";
 import { TScale } from "@/dtos/Scales";
 import { TRank } from "@/dtos/user/Rank";
 import { TThoughts } from "@/types/quantities/user/TThought";
 import { BaseUser } from "@/constants/User";
+import { RankValueForm } from "@/promptFormers/Rank.former";
+import { ThougthsValueForm } from "@/promptFormers/Thoughts.former";
+import { CharacterValueForm } from "@/promptFormers/Character.former";
 
 export class Survey {
     private payload: TPayload;

@@ -6,3 +6,4 @@ exports.AttachmentTypes = {
     VIDEO: "vid",
     AUDIO: "aud"
 };
+//# sourceMappingURL=AttachmentTypes.js.map

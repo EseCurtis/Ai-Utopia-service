@@ -24,6 +24,7 @@
    "moduleResolution": "node",
    "emitDecoratorMetadata": true,
    "experimentalDecorators": true,
-   "sourceMap": true
+   "sourceMap": true,
+   "plugins": [{ "transform": "typescript-transform-paths" }] 
   }
 }

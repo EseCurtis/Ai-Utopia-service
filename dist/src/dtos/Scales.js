@@ -8,3 +8,4 @@ exports.Scales = {
     SUBMIN: 1,
     MIN: 0,
 };
+//# sourceMappingURL=Scales.js.map

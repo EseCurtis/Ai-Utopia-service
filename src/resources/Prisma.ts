@@ -3,13 +3,13 @@ import { Scales } from '@/dtos/Scales'
 import { Ranks } from '@/dtos/user/Rank'
 import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient()
+export const prisma = new PrismaClient()
 
 
 export const PrismaTest = () => {
 
     async function main() {
-        await prisma.user.deleteMany({ where: { name: "Ese Curtis"},})
+        await prisma.user.deleteMany({ where: { name: "Ese Curtis" }, })
         // await prisma.user.create({
         //     data: {
         //         name: "Ese Curtis",
@@ -56,3 +56,14 @@ export const PrismaTest = () => {
         })
 }
 
+export const clientQuery = async (prismaQuery: () => Promise<any>) => {
+    try {
+        const result = await prismaQuery();
+        await prisma.$disconnect();
+        return result;
+    } catch (e) {
+        console.error(e);
+        await prisma.$disconnect();
+        process.exit(1);
+    }
+};

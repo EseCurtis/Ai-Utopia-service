@@ -1,1 +1,1 @@
-"use strict";
+//# sourceMappingURL=Thought.js.map
