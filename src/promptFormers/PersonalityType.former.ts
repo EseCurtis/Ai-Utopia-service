@@ -8,7 +8,7 @@ export const PersonalityTypeForm: TResponseForm = {
     example: generateExample("ISTJ"),
     prototyper(value): string {
         console.log(value);
-        return (value && String(value)) || PersonalityTypes.ESTJ;
+        return (value && String(value)) || PersonalityTypes.ISTJ;
     }
 };
 
