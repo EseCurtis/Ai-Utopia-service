@@ -39,4 +39,15 @@ export class UserEntity {
 
         return (createQuery)
     }
+
+    async getAll(): Promise<TUser[]> {
+        const allUsers = await clientQuery(async () => {
+            return await this.repo.findMany({
+                include: {
+                    character: true,
+                },
+            });
+        });
+        return allUsers;
+    }
 }
